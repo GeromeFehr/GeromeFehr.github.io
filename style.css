@@ -184,3 +184,13 @@ button:hover {
   background: #1c44b2;
   transform: translateY(0);
 }
+
+.qr-image {
+  width: 180px;
+  height: 180px;
+  display: block;
+  margin: 1rem auto;
+  background: #0f172a;
+  padding: 8px;
+  border-radius: 12px;
+}
