@@ -186,12 +186,11 @@ button:hover {
 }
 
 .qr-image {
-  width: 85px;
-  height: 85px;
+  width: 100px;
+  height: 100px;
   display: block;
   margin: 1rem auto;
   background: #0f172a;
   padding: 8px;
   border-radius: 6px;
-  margin-left: 50px
 }
