@@ -136,3 +136,11 @@ button:hover {
     grid-template-columns: 1.4fr 1fr;
   }
 }
+/* Logo auf Startseite */
+.logo {
+  width: 96px;
+  height: 96px;
+  display: block;
+  margin: 1rem auto;
+  image-rendering: crisp-edges;
+}
