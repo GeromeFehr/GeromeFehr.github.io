@@ -8,7 +8,6 @@
 <body>
   <header>
     <h1>Grafikkarte – Lernzirkelstation</h1>
-    
     <nav>
       <a href="index.html">Startseite</a>
       <a href="grundlagen.html">Grundlagen</a>
@@ -16,20 +15,99 @@
       <a href="aufbau.html">Aufbau</a>
       <a href="quiz.html">Quiz</a>
     </nav>
-    
   </header>
-  <main>
-    
-<section class="card">
-  <span class="badge">Aufbau</span>
-  <h2>3. Aufbau einer Grafikkarte</h2>
-  <p>Eine Grafikkarte besteht unter anderem aus GPU, Grafikspeicher (VRAM),
-     Speicher-Controller, Bus-Interface, Anschlüssen und einem Kühlsystem.</p>
-</section>
 
+  <main>
+    <section class="card">
+      <span class="badge">Aufbau</span>
+      <h2>3. Aufbau einer Grafikkarte</h2>
+      <p>
+        Eine Grafikkarte besteht aus mehreren Bauteilen, die zusammenarbeiten,
+        um Bilddaten zu berechnen und an den Monitor auszugeben. Die folgende
+        Beschreibung passt zu deinem Blockdiagramm mit GPU, VRAM, Bus-Interface
+        usw.
+      </p>
+
+      <h3>3.1 GPU (Graphic Processing Unit)</h3>
+      <p>
+        Die <b>GPU</b> ist der Hauptchip der Grafikkarte. Hier sitzen die
+        Rechenkerne (Shader), die:
+      </p>
+      <ul>
+        <li>Pixel berechnen,</li>
+        <li>Licht und Schatten ermitteln,</li>
+        <li>3D-Modelle transformieren,</li>
+        <li>Effekte anwenden.</li>
+      </ul>
+
+      <h3>3.2 VRAM (Video- und Grafikspeicher)</h3>
+      <p>
+        Direkt neben der GPU befindet sich der <b>VRAM</b>. Er speichert Texturen,
+        3D-Modelle, Shader-Daten und Zwischenergebnisse. Der Speicher ist über
+        einen schnellen Speicherbus mit der GPU verbunden.
+      </p>
+
+      <h3>3.3 Speichercontroller</h3>
+      <p>
+        Der <b>Speichercontroller</b> steuert den Datenfluss zwischen GPU und
+        VRAM. Er sorgt dafür, dass die GPU schnell genug mit Daten versorgt wird
+        und entscheidet, wie Daten gelesen und geschrieben werden. Zusammen mit
+        dem VRAM bestimmt er die <b>Speicherbandbreite</b>.
+      </p>
+
+      <h3>3.4 Bus-Interface (PCI Express)</h3>
+      <p>
+        Über das <b>Bus-Interface</b> (meist PCI Express) ist die Grafikkarte mit
+        dem restlichen System verbunden. Über diesen Weg erhält die GPU:
+      </p>
+      <ul>
+        <li>Befehle der CPU,</li>
+        <li>Daten aus dem Arbeitsspeicher,</li>
+        <li>Informationen aus Spielen und Programmen.</li>
+      </ul>
+
+      <h3>3.5 Video-Out-Controller und Anschlüsse</h3>
+      <p>
+        Sind die Bilder berechnet, werden sie vom <b>Video-Out-Controller</b>
+        aufbereitet und an die Monitoranschlüsse weitergegeben:
+      </p>
+      <ul>
+        <li><b>HDMI</b> – sehr häufig bei Monitoren und Fernsehern,</li>
+        <li><b>DisplayPort</b> – Standard im PC-Bereich, gerade für hohe Bildraten,</li>
+        <li><b>USB-C / Alt-Mode</b> – vor allem bei Laptops und Dockingstations.</li>
+      </ul>
+      <p>
+        In älteren Schaubildern findet man zusätzlich noch einen <b>RAMDAC</b>, der
+        digitale Signale in analoge VGA-Signale umwandelt. Heute ist das fast
+        nur noch in der Theorie relevant.
+      </p>
+
+      <h3>3.6 Kühlsystem</h3>
+      <p>
+        Damit die GPU nicht überhitzt, besitzt jede Grafikkarte ein Kühlsystem:
+      </p>
+      <ul>
+        <li>einen Kühlkörper (meist aus Aluminium oder Kupfer),</li>
+        <li>ein bis drei Lüfter,</li>
+        <li>teilweise eine Backplate und Heatpipes.</li>
+      </ul>
+      <p>
+        Eine gute Kühlung ist wichtig, damit die Grafikkarte ihre Leistung
+        dauerhaft halten kann und dabei möglichst leise bleibt.
+      </p>
+
+      <div class="highlight">
+        <b>Zusammenfassung:</b><br />
+        Die CPU schickt Befehle an die GPU. Die GPU lädt Daten aus dem VRAM,
+        berechnet daraus Bilder und schickt sie über den Video-Controller an die
+        Monitoranschlüsse. Speichercontroller, Bus-Interface und Kühlung sorgen
+        dafür, dass alles schnell und stabil läuft.
+      </div>
+    </section>
   </main>
+
   <footer>
-    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte
+    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte von Gérôme Fehr & Hüseyin Özdemir
   </footer>
 </body>
 </html>
