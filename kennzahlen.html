@@ -8,7 +8,6 @@
 <body>
   <header>
     <h1>Grafikkarte – Lernzirkelstation</h1>
-    
     <nav>
       <a href="index.html">Startseite</a>
       <a href="grundlagen.html">Grundlagen</a>
@@ -16,25 +15,147 @@
       <a href="aufbau.html">Aufbau</a>
       <a href="quiz.html">Quiz</a>
     </nav>
-    
   </header>
-  <main>
-    
-<section class="card">
-  <span class="badge">Leistungsmerkmale</span>
-  <h2>2. Wichtige Kennzahlen / Merkmale einer Grafikkarte</h2>
-  <ul>
-    <li><b>VRAM (Grafikspeicher)</b> – Speicher für Texturen und Bilddaten.</li>
-    <li><b>GPU-Taktfrequenz</b> – bestimmt, wie schnell der Grafikchip arbeitet.</li>
-    <li><b>Shader-Einheiten / CUDA-Kerne</b> – Recheneinheiten der GPU.</li>
-    <li><b>Speicherbandbreite</b> – Datenrate zwischen GPU und VRAM.</li>
-    <li><b>Leistungsaufnahme (TDP)</b> – Strombedarf der Grafikkarte.</li>
-  </ul>
-</section>
 
+  <main>
+    <section class="card">
+      <span class="badge">Leistungsmerkmale</span>
+      <h2>2. Wichtige Kennzahlen einer Grafikkarte</h2>
+      <p>
+        An den folgenden Kennzahlen kannst du erkennen, wie leistungsfähig eine
+        Grafikkarte ist und wofür sie sich eignet. Alle Begriffe hier werden im
+        Quiz verwendet.
+      </p>
+
+      <h3>2.1 VRAM (Video-RAM / Grafikspeicher)</h3>
+      <p>
+        Der <b>VRAM</b> ist der Grafikspeicher der Karte. Hier liegen:
+      </p>
+      <ul>
+        <li>Texturen (z.&nbsp;B. Oberflächen von Wänden, Fahrzeugen, Figuren)</li>
+        <li>Modelldaten von 3D-Objekten</li>
+        <li>Zwischenergebnisse von Berechnungen</li>
+        <li>Frame-Buffer, also fertige oder halbfertige Bilder</li>
+      </ul>
+      <p>
+        Je mehr VRAM vorhanden ist, desto höher können Auflösung und
+        Detailgrad sein, ohne dass die Leistung einbricht.
+      </p>
+
+      <div class="highlight">
+        <b>Wichtig:</b> Im Quiz ist gefragt, was VRAM ist. Richtig ist:
+        <i>„Grafikspeicher, in dem Texturen und Bilddaten liegen“</i>.
+      </div>
+
+      <h3>2.2 Shader / Stream-Prozessoren</h3>
+      <p>
+        <b>Shader</b> (bei AMD auch <b>Stream-Prozessoren</b> genannt) sind die
+        <b>Rechenkerne der GPU</b>. Jeder Shader führt einfache mathematische
+        Operationen aus, zum Beispiel:
+      </p>
+      <ul>
+        <li>Berechnung der Farbe eines Pixels</li>
+        <li>Licht- und Schattenberechnung</li>
+        <li>Transformation von 3D-Objekten</li>
+        <li>Anwenden von Effekten (z.&nbsp;B. Unschärfe, Spiegelungen)</li>
+      </ul>
+      <p>
+        Moderne GPUs besitzen <b>tausende Shader</b>, damit sehr viele Pixel und
+        Objekte gleichzeitig berechnet werden können.
+      </p>
+
+      <div class="highlight">
+        <b>Warum so viele Shader?</b><br />
+        Ein Monitor zeigt Millionen von Pixeln. Viele Shader ermöglichen, dass
+        diese Pixel <b>parallel</b> berechnet werden. Dadurch entstehen hohe FPS
+        und flüssige Spiele.
+      </div>
+
+      <h3>2.3 GPU-Taktfrequenz und Rechenleistung</h3>
+      <p>
+        Die Taktfrequenz der GPU wird in MHz oder GHz angegeben und zeigt, wie
+        schnell die Rechenkerne arbeiten. Zusammen mit der Anzahl der Shader
+        ergibt sich die theoretische Rechenleistung, die oft in
+        <b>GFLOPs</b> oder <b>TFLOPs</b> angegeben wird.
+      </p>
+
+      <h3>2.4 TDP (Thermal Design Power)</h3>
+      <p>
+        Die <b>TDP</b> wird in Watt angegeben und beschreibt, wie viel elektrische
+        Leistung die Grafikkarte ungefähr aufnimmt und in Wärme umwandelt.
+        Je höher die TDP, desto:
+      </p>
+      <ul>
+        <li>stärker muss das Netzteil sein,</li>
+        <li>besser muss die Kühlung sein,</li>
+        <li>mehr Strom verbraucht der PC.</li>
+      </ul>
+
+      <div class="highlight">
+        <b>Im Quiz:</b> Bei der Frage nach der Kennzahl für den Strombedarf der
+        Grafikkarte ist <b>TDP in Watt</b> die richtige Antwort.
+      </div>
+
+      <h3>2.5 Speicherbandbreite</h3>
+      <p>
+        Die <b>Speicherbandbreite</b> gibt an, wie viele Daten pro Sekunde zwischen
+        GPU und VRAM übertragen werden können. Sie hängt ab von:
+      </p>
+      <ul>
+        <li>dem Speichertakt (z.&nbsp;B. 18&nbsp;Gbps)</li>
+        <li>der Breite des Speicherinterfaces (z.&nbsp;B. 128-Bit, 256-Bit)</li>
+      </ul>
+      <p>
+        Eine hohe Speicherbandbreite ist wichtig, damit die GPU nicht auf Daten
+        warten muss – besonders bei hohen Auflösungen und vielen Texturen.
+      </p>
+
+      <h3>2.6 TMU (Texture Mapping Unit)</h3>
+      <p>
+        Eine <b>TMU</b> ist eine <b>Texture Mapping Unit</b>. Sie ist dafür
+        zuständig:
+      </p>
+      <ul>
+        <li>Texturen aus dem VRAM zu laden,</li>
+        <li>sie zu skalieren und auf Flächen zu legen,</li>
+        <li>Filter wie bilineares oder anisotropes Filtern anzuwenden.</li>
+      </ul>
+      <p>
+        Je mehr TMUs eine GPU besitzt, desto schneller können Texturen auf
+        Oberflächen dargestellt werden.
+      </p>
+
+      <div class="highlight">
+        <b>Im Quiz:</b> TMUs haben nichts mit Lüftersteuerung oder Bildausgabe
+        zu tun, sondern mit <b>Texturen</b>.
+      </div>
+
+      <h3>2.7 ROP (Render Output Unit)</h3>
+      <p>
+        Eine <b>ROP</b> (Render Output Unit) kümmert sich um das
+        <b>Finalisieren des Bildes</b>. Sie ist unter anderem verantwortlich für:
+      </p>
+      <ul>
+        <li>das Zusammenführen der berechneten Pixel,</li>
+        <li>Z-Buffer (Tiefe / welche Objekte verdecken andere),</li>
+        <li>Anti-Aliasing (Kanten­glättung).</li>
+      </ul>
+      <p>
+        ROPs bestimmen unter anderem die <b>Pixelfüllrate</b>, also wie viele
+        fertige Pixel pro Sekunde geschrieben werden können.
+      </p>
+
+      <h3>2.8 FPS und Benchmarks</h3>
+      <p>
+        In der Praxis wird die Leistung von Grafikkarten oft über
+        <b>FPS (Frames per Second)</b> und <b>Benchmarks</b> verglichen. Sie zeigen,
+        wie gut eine Karte in echten Spielen oder Testprogrammen abschneidet.
+      </p>
+    </section>
   </main>
+
   <footer>
-    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte
+    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte von Gérôme Fehr & Hüseyin Özdemir
   </footer>
 </body>
 </html>
