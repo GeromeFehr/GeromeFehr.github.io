@@ -75,6 +75,15 @@ const questions = [
   }
 ];
 
+// 🔀 Funktion zum Mischen des Arrays (Fisher-Yates Shuffle)
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 // Quiz in die Seite rendern
 function renderQuiz() {
   const root = document.getElementById("quiz-root");
@@ -82,7 +91,10 @@ function renderQuiz() {
 
   root.innerHTML = "";
 
-  questions.forEach((q, idx) => {
+  // 🔀 Fragen mischen
+  const shuffledQuestions = shuffle([...questions]);
+
+  shuffledQuestions.forEach((q, idx) => {
     const container = document.createElement("div");
     container.className = "quiz-question";
 
@@ -143,51 +155,4 @@ function checkQuiz() {
   if (ratio === 1) {
     feedback = "Perfekt! Du hast alle Fragen richtig beantwortet – Grafik-Gott! 🔥";
   } else if (ratio >= 0.75) {
-    feedback = "Sehr gut! Du kennst dich mit Grafikkarten schon richtig gut aus. 💪";
-  } else if (ratio >= 0.5) {
-    feedback = "Solide Basis, aber du kannst dir die Inhalte noch einmal ansehen. 🙂";
-  } else {
-    feedback = "Kein Stress – schau dir die Grundlagen nochmal an und versuch es erneut. 🙂";
-  }
-
-  result.textContent =
-    `Du hast ${correctCount} von ${questions.length} Fragen richtig beantwortet. ` +
-    feedback;
-}
-
-// Bewertung speichern (LocalStorage)
-function initRating() {
-  const ratingBtn = document.getElementById("rating-btn");
-  const result = document.getElementById("rating-result");
-  if (!ratingBtn || !result) return;
-
-  ratingBtn.addEventListener("click", () => {
-    const selected = document.querySelector('input[name="rating"]:checked');
-
-    if (!selected) {
-      result.textContent = "Bitte eine Bewertung auswählen!";
-      return;
-    }
-
-    const value = Number(selected.value);
-
-    // vorhandene Bewertungen aus LocalStorage holen
-    const existing = JSON.parse(localStorage.getItem("gpu_lernstation_ratings") || "[]");
-    existing.push(value);
-    localStorage.setItem("gpu_lernstation_ratings", JSON.stringify(existing));
-
-    result.textContent = "Danke für dein Feedback! ⭐";
-  });
-}
-
-// Initialisierung nach Laden der Seite
-document.addEventListener("DOMContentLoaded", () => {
-  renderQuiz();
-
-  const btn = document.getElementById("check-btn");
-  if (btn) {
-    btn.addEventListener("click", checkQuiz);
-  }
-
-  initRating();
-});
+    feedback = "Sehr gut! Du kennst dich mit Grafikkarten schon richt
