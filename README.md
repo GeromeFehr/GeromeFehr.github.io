@@ -1,2 +1,2 @@
 # GeromeFehr.github.io
-Grafikkartenpräsentation
+Grafikkartenpräsentation EPSH
