@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Feedback – Lernstation Grafikkarte</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
   <header>
@@ -23,53 +24,71 @@
       <span class="badge">Feedback</span>
       <h2>Übersicht der gespeicherten Bewertungen</h2>
       <p>
-        Hier werden alle Bewertungen angezeigt, die auf diesem Gerät im Browser
-        gespeichert wurden. Die Daten stammen aus dem LocalStorage und sind
-        <b>nicht</b> online sichtbar, sondern nur lokal.
+        Hier siehst du die Bewertungen, die auf diesem Gerät im Browser
+        gespeichert wurden. Die Daten werden im LocalStorage unter
+        <code>gpu_lernstation_ratings</code> abgelegt.
       </p>
 
-      <div id="feedback-content">
-        <p><b>Anzahl Bewertungen:</b> <span id="rating-count">0</span></p>
-        <p><b>Durchschnittliche Bewertung:</b> <span id="rating-average">-</span></p>
+      <p><b>Anzahl Bewertungen:</b> <span id="rating-count">0</span></p>
+      <p><b>Durchschnittliche Bewertung:</b> <span id="rating-average">-</span></p>
 
-        <h3>Alle gespeicherten Bewertungen:</h3>
-        <ul id="rating-list"></ul>
-      </div>
+      <h3>Alle gespeicherten Bewertungen:</h3>
+      <ul id="rating-list"></ul>
+
+      <button id="reset-btn">Alle Bewertungen auf diesem Gerät löschen</button>
 
       <div class="highlight">
-        <b>Hinweis:</b> Wenn du den Browsercache oder die Website-Daten löschst,
-        werden auch die gespeicherten Bewertungen entfernt, da sie nur lokal im
-        LocalStorage liegen.
+        Hinweis: Die Bewertungen sind nur lokal auf diesem Gerät gespeichert.
+        Wenn du den Browser-Cache oder Websitedaten löschst, verschwinden sie.
       </div>
     </section>
   </main>
 
   <footer>
-    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte von Gérôme Fehr & Hüseyin Özdemir
+    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte von Gérôme Fehr & Hüseyin Özdemit
   </footer>
 
   <script>
-    const ratings = JSON.parse(localStorage.getItem("gpu_lernstation_ratings") || "[]");
-    const countSpan = document.getElementById("rating-count");
-    const avgSpan = document.getElementById("rating-average");
-    const list = document.getElementById("rating-list");
+    (function () {
+      var ratings;
+      try {
+        ratings = JSON.parse(localStorage.getItem("gpu_lernstation_ratings") || "[]");
+      } catch (e) {
+        ratings = [];
+      }
 
-    if (ratings.length === 0) {
-      countSpan.textContent = "0";
-      avgSpan.textContent = "-";
-      list.innerHTML = "<li>Noch keine Bewertungen vorhanden.</li>";
-    } else {
-      countSpan.textContent = ratings.length.toString();
-      const sum = ratings.reduce((a, b) => a + b, 0);
-      const avg = sum / ratings.length;
-      avgSpan.textContent = avg.toFixed(2) + " ⭐";
+      var countSpan = document.getElementById("rating-count");
+      var avgSpan = document.getElementById("rating-average");
+      var list = document.getElementById("rating-list");
+      var resetBtn = document.getElementById("reset-btn");
 
-      ratings.forEach((r, idx) => {
-        const li = document.createElement("li");
-        li.textContent = `Bewertung ${idx + 1}: ${r} ⭐`;
-        list.appendChild(li);
-      });
-    }
+      if (!ratings || ratings.length === 0) {
+        countSpan.textContent = "0";
+        avgSpan.textContent = "-";
+        list.innerHTML = "<li>Noch keine Bewertungen gespeichert.</li>";
+      } else {
+        countSpan.textContent = String(ratings.length);
+        var sum = 0;
+        for (var i = 0; i < ratings.length; i++) {
+          sum += ratings[i];
+        }
+        var avg = sum / ratings.length;
+        avgSpan.textContent = avg.toFixed(2) + " von 5";
+
+        for (var j = 0; j < ratings.length; j++) {
+          var li = document.createElement("li");
+          li.textContent = "Bewertung " + (j + 1) + ": " + ratings[j] + " von 5";
+          list.appendChild(li);
+        }
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener("click", function () {
+          localStorage.removeItem("gpu_lernstation_ratings");
+          location.reload();
+        });
+      }
+    })();
   </script>
 </body>
 </html>
