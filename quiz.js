@@ -155,9 +155,39 @@ function checkQuiz() {
     feedback;
 }
 
-// Init
+// Bewertung speichern (LocalStorage)
+function initRating() {
+  const ratingBtn = document.getElementById("rating-btn");
+  const result = document.getElementById("rating-result");
+  if (!ratingBtn || !result) return;
+
+  ratingBtn.addEventListener("click", () => {
+    const selected = document.querySelector('input[name="rating"]:checked');
+
+    if (!selected) {
+      result.textContent = "Bitte eine Bewertung auswählen!";
+      return;
+    }
+
+    const value = Number(selected.value);
+
+    // vorhandene Bewertungen aus LocalStorage holen
+    const existing = JSON.parse(localStorage.getItem("gpu_lernstation_ratings") || "[]");
+    existing.push(value);
+    localStorage.setItem("gpu_lernstation_ratings", JSON.stringify(existing));
+
+    result.textContent = "Danke für dein Feedback! ⭐";
+  });
+}
+
+// Initialisierung nach Laden der Seite
 document.addEventListener("DOMContentLoaded", () => {
   renderQuiz();
+
   const btn = document.getElementById("check-btn");
-  if (btn) btn.addEventListener("click", checkQuiz);
+  if (btn) {
+    btn.addEventListener("click", checkQuiz);
+  }
+
+  initRating();
 });
