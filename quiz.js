@@ -122,4 +122,3 @@ function checkQuiz() {
     if (Number(selected.value) === q.correct) {
       correctCount++;
     }
-// Platzhalter – kann später mit JavaScript-Quiz gefüllt werden.
