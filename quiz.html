@@ -2,8 +2,9 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Quiz – Grafikkarte</title>
+  <title>Quiz – Lernstation Grafikkarte</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
   <header>
@@ -14,6 +15,7 @@
       <a href="kennzahlen.html">Kennzahlen</a>
       <a href="aufbau.html">Aufbau</a>
       <a href="quiz.html">Quiz</a>
+      <a href="feedback.html">Feedback</a>
     </nav>
   </header>
 
@@ -22,8 +24,9 @@
       <span class="badge">Quiz</span>
       <h2>4. Lernzirkel-Quiz: Prüfe dein Wissen</h2>
       <p>
-        Beantworte die folgenden Fragen. Wähle jeweils eine Antwort aus und klicke
-        anschließend auf <b>Auswerten</b>, um dein Ergebnis zu sehen.
+        Beantworte die folgenden Fragen zur Grafikkarte. Wähle jeweils eine
+        Antwort aus und klicke anschließend auf <b>Auswerten</b>, um dein
+        Ergebnis zu sehen.
       </p>
 
       <div id="quiz-root"></div>
@@ -38,11 +41,11 @@
 
       <div id="rating-section">
         <div>
-          <label><input type="radio" name="rating" value="1"> ⭐</label>
-          <label><input type="radio" name="rating" value="2"> ⭐⭐</label>
-          <label><input type="radio" name="rating" value="3"> ⭐⭐⭐</label>
-          <label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐</label>
-          <label><input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐</label>
+          <label><input type="radio" name="rating" value="1" /> 1 Stern</label>
+          <label><input type="radio" name="rating" value="2" /> 2 Sterne</label>
+          <label><input type="radio" name="rating" value="3" /> 3 Sterne</label>
+          <label><input type="radio" name="rating" value="4" /> 4 Sterne</label>
+          <label><input type="radio" name="rating" value="5" /> 5 Sterne</label>
         </div>
 
         <button id="rating-btn">Bewertung speichern</button>
@@ -56,9 +59,32 @@
   </main>
 
   <footer>
-    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte von Gérôme Fehr & Hüseyin Özdemir
+    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte
   </footer>
 
+  <!-- Quiz-Logik -->
   <script src="quiz.js"></script>
+
+  <!-- Bewertung-Logik direkt hier -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var ratingBtn = document.getElementById("rating-btn");
+      var result = document.getElementById("rating-result");
+      if (!ratingBtn || !result) return;
+
+      ratingBtn.addEventListener("click", function () {
+        var selected = document.querySelector('input[name="rating"]:checked');
+        if (!selected) {
+          result.textContent = "Bitte eine Bewertung auswählen.";
+          return;
+        }
+        var value = Number(selected.value);
+        var existing = JSON.parse(localStorage.getItem("gpu_lernstation_ratings") || "[]");
+        existing.push(value);
+        localStorage.setItem("gpu_lernstation_ratings", JSON.stringify(existing));
+        result.textContent = "Danke für dein Feedback.";
+      });
+    });
+  </script>
 </body>
 </html>
