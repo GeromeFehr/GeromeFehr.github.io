@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>GPU-Benchmark (Simulation)</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+<body>
+  <header>
+    <h1>Grafikkarte – Lernzirkelstation</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="grundlagen.html">Grundlagen</a>
+      <a href="kennzahlen.html">Kennzahlen</a>
+      <a href="aufbau.html">Aufbau</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="benchmark.html">Benchmark</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <span class="badge">Simulation</span>
+      <h2>GPU-Benchmark (emuliert)</h2>
+      <p>
+        Diese Seite simuliert einen vereinfachten GPU-Benchmark. Die Werte sind
+        nicht echt, sondern dienen dazu, die Bedeutung von Kennzahlen wie
+        FPS (Bilder pro Sekunde) und Score zu veranschaulichen.
+      </p>
+
+      <h3>1. GPU-Auswahl</h3>
+      <p>Wähle ein fiktives GPU-Profil aus:</p>
+      <select id="gpu-select">
+        <option value="entry">Einsteiger-GPU (Office / leichtes Gaming)</option>
+        <option value="mid">Mittelklasse-GPU (Full-HD Gaming)</option>
+        <option value="high">High-End-GPU (1440p / 4K Gaming)</option>
+        <option value="work">Workstation-GPU (CAD / Rendering)</option>
+      </select>
+
+      <h3 style="margin-top:1.5rem;">2. Benchmark starten</h3>
+      <p>Klicke auf "Benchmark starten", um einen Lauf zu simulieren.</p>
+
+      <button id="bench-btn">Benchmark starten</button>
+
+      <div id="bench-progress-wrapper">
+        <div id="bench-progress-bar"></div>
+      </div>
+
+      <div id="bench-status"></div>
+
+      <div id="bench-results">
+        <h3>Ergebnis (simuliert)</h3>
+        <p><b>Gesamt-Score:</b> <span id="bench-score">-</span></p>
+        <p><b>FPS in 1080p:</b> <span id="bench-1080">-</span></p>
+        <p><b>FPS in 1440p:</b> <span id="bench-1440">-</span></p>
+        <p><b>FPS in 4K:</b> <span id="bench-4k">-</span></p>
+      </div>
+
+      <hr style="margin: 2rem 0; border-color: #1e293b;" />
+
+      <h2>Wie liest man GPU-Benchmarks richtig?</h2>
+      <p>
+        Benchmarks werden genutzt, um die Leistung von Grafikkarten objektiv miteinander
+        vergleichen zu können. Dabei gibt es verschiedene Werte, die du verstehen solltest:
+      </p>
+
+      <ul>
+        <li>
+          <b>FPS (Frames per Second):</b>  
+          Gibt an, wie viele Bilder pro Sekunde gerendert werden.  
+          • 60 FPS = flüssig  
+          • 120 FPS = sehr flüssig  
+          • unter 30 FPS = sichtbar ruckelig  
+        </li>
+
+        <li style="margin-top:0.7rem;">
+          <b>Score:</b>  
+          Ein Gesamtpunktwert, der mehrere GPU-Faktoren zusammenfasst  
+          (Shader-Leistung, Speicherbandbreite, Taktfrequenzen, Treiberoptimierung).
+          Ein höherer Score bedeutet mehr Rechenleistung.
+        </li>
+
+        <li style="margin-top:0.7rem;">
+          <b>1080p / 1440p / 4K:</b>  
+          Höhere Auflösungen belasten die GPU stärker.  
+          Eine GPU kann bei 1080p 140 FPS liefern, aber in 4K nur 40 FPS – völlig normal.
+        </li>
+
+        <li style="margin-top:0.7rem;">
+          <b>Workstation vs. Gaming:</b>  
+          Workstation-GPUs haben oft niedrige Gaming-FPS, aber einen sehr hohen Score
+          in Profi-Anwendungen wie CAD oder Rendering.
+        </li>
+
+        <li style="margin-top:0.7rem;">
+          <b>Zufallsschwankungen:</b>  
+          Auch echte Benchmarks schwanken leicht (Temperatur, Strom, Hintergrundprozesse).
+          Deshalb zeigen wir hier kleine zufällige Variationen.
+        </li>
+      </ul>
+
+      <div class="highlight" style="margin-top:1.5rem;">
+        Diese Benchmark-Simulation zeigt dir, wie man GPU-Leistung interpretiert, ohne
+        dass echte Hardware getestet werden muss – ideal für den Lernzirkel.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte
+  </footer>
+
+  <script>
+    // Beispiel-Profile mit "Basisleistung"
+    var gpuProfiles = {
+      entry:  { baseScore: 3000, fps1080: 60,  fps1440: 35, fps4k: 20 },
+      mid:    { baseScore: 6500, fps1080: 120, fps1440: 80, fps4k: 40 },
+      high:   { baseScore: 11000,fps1080: 200, fps1440: 140,fps4k: 70 },
+      work:   { baseScore: 9000, fps1080: 100, fps1440: 90, fps4k: 60 }
+    };
+
+    var running = false;
+
+    function runBenchmark() {
+      if (running) return;
+      running = true;
+
+      var select = document.getElementById("gpu-select");
+      var key = select.value;
+      var profile = gpuProfiles[key];
+
+      var bar = document.getElementById("bench-progress-bar");
+      var wrapper = document.getElementById("bench-progress-wrapper");
+      var status = document.getElementById("bench-status");
+
+      wrapper.style.display = "block";
+      bar.style.width = "0%";
+      status.textContent = "Benchmark läuft...";
+
+      var progress = 0;
+      var interval = setInterval(function () {
+        progress += 2 + Math.random() * 4;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          status.textContent = "Benchmark abgeschlossen.";
+          showResults(profile);
+          running = false;
+        }
+        bar.style.width = progress + "%";
+      }, 80);
+    }
+
+    function showResults(profile) {
+      function jitter(value, percent) {
+        var delta = value * percent;
+        var min = value - delta;
+        var max = value + delta;
+        return Math.round(min + Math.random() * (max - min));
+      }
+
+      var score = jitter(profile.baseScore, 0.1);
+      var fps1080 = jitter(profile.fps1080, 0.1);
+      var fps1440 = jitter(profile.fps1440, 0.1);
+      var fps4k = jitter(profile.fps4k, 0.15);
+
+      document.getElementById("bench-score").textContent = String(score);
+      document.getElementById("bench-1080").textContent = String(fps1080);
+      document.getElementById("bench-1440").textContent = String(fps1440);
+      document.getElementById("bench-4k").textContent = String(fps4k);
+
+      document.getElementById("bench-results").style.display = "block";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn = document.getElementById("bench-btn");
+      if (btn) {
+        btn.addEventListener("click", runBenchmark);
+      }
+    });
+  </script>
+
+</body>
+</html>
