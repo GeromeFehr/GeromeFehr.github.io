@@ -21,18 +21,37 @@
     <section class="card">
       <span class="badge">Quiz</span>
       <h2>4. Lernzirkel-Quiz: Prüfe dein Wissen</h2>
-      <p>Beantworte die folgenden Fragen. Wähle jeweils eine Antwort aus und klicke
-         anschließend auf <b>Auswerten</b>, um dein Ergebnis zu sehen.</p>
+      <p>
+        Beantworte die folgenden Fragen. Wähle jeweils eine Antwort aus und klicke
+        anschließend auf <b>Auswerten</b>, um dein Ergebnis zu sehen.
+      </p>
 
       <div id="quiz-root"></div>
 
       <button id="check-btn">Auswerten</button>
       <div id="quiz-result" class="result"></div>
 
-      <div class="highlight" style="margin-top: 1.25rem;">
-        <b>Tipp:</b> Wenn du dir bei einer Frage unsicher bist, schau noch einmal auf die
-        Seiten <i>Grundlagen</i>, <i>Kennzahlen</i> oder <i>Aufbau</i> nach.
+      <hr style="margin: 1.5rem 0; border-color: #111827;" />
+
+      <h2>5. Dein Feedback zur Lernstation</h2>
+      <p>Wie hat dir diese Lernstation insgesamt gefallen?</p>
+
+      <div id="rating-section">
+        <div>
+          <label><input type="radio" name="rating" value="1"> ⭐</label>
+          <label><input type="radio" name="rating" value="2"> ⭐⭐</label>
+          <label><input type="radio" name="rating" value="3"> ⭐⭐⭐</label>
+          <label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐</label>
+          <label><input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐</label>
+        </div>
+
+        <button id="rating-btn">Bewertung speichern</button>
+        <p id="rating-result" class="result"></p>
       </div>
+
+      <p style="margin-top: 1rem;">
+        <a href="feedback.html">→ Zur Übersicht der gespeicherten Bewertungen</a>
+      </p>
     </section>
   </main>
 
