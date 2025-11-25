@@ -65,9 +65,9 @@
   <!-- Quiz-Logik -->
   <script src="quiz.js"></script>
 
-  <!-- Bewertung-Logik direkt hier -->
+  <!-- Bewertung-Logik: sehr simpel gehalten -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    (function () {
       var ratingBtn = document.getElementById("rating-btn");
       var result = document.getElementById("rating-result");
       if (!ratingBtn || !result) return;
@@ -78,13 +78,23 @@
           result.textContent = "Bitte eine Bewertung auswählen.";
           return;
         }
+
         var value = Number(selected.value);
-        var existing = JSON.parse(localStorage.getItem("gpu_lernstation_ratings") || "[]");
+
+        // vorhandene Bewertungen holen
+        var existing = [];
+        try {
+          existing = JSON.parse(localStorage.getItem("gpu_lernstation_ratings") || "[]");
+        } catch (e) {
+          existing = [];
+        }
+
         existing.push(value);
         localStorage.setItem("gpu_lernstation_ratings", JSON.stringify(existing));
-        result.textContent = "Danke für dein Feedback.";
+
+        result.textContent = "Danke für dein Feedback!";
       });
-    });
+    })();
   </script>
 </body>
 </html>
