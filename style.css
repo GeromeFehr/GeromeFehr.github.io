@@ -170,6 +170,9 @@ button:hover {
   border-radius: 8px;
   transition: all 0.2s ease;
   margin-top: 20px;
+  margin-left: 20px;  /* Abstand nach links */
+}
+
 }
 
 .wiki-button:hover {
