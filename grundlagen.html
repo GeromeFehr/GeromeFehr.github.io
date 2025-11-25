@@ -8,7 +8,6 @@
 <body>
   <header>
     <h1>Grafikkarte – Lernzirkelstation</h1>
-    
     <nav>
       <a href="index.html">Startseite</a>
       <a href="grundlagen.html">Grundlagen</a>
@@ -16,21 +15,116 @@
       <a href="aufbau.html">Aufbau</a>
       <a href="quiz.html">Quiz</a>
     </nav>
-    
   </header>
-  <main>
-    
-<section class="card">
-  <span class="badge">Grundlagen</span>
-  <h2>1. Was ist eine Grafikkarte?</h2>
-  <p>Eine Grafikkarte ist die Komponente im Computer, die alle sichtbaren Inhalte
-     auf dem Monitor erzeugt. Sie berechnet Bilder, Videos, Animationen und 3D-Szenen
-     und schickt das fertige Bildsignal an den Bildschirm.</p>
-</section>
 
+  <main>
+    <section class="card">
+      <span class="badge">Grundlagen</span>
+      <h2>1. Was macht eine Grafikkarte?</h2>
+      <p>
+        Die Grafikkarte ist die Hardware im Computer, die <b>Bilder, Videos und 3D-Grafiken</b>
+        berechnet und an den Monitor schickt. Immer wenn du ein Spiel startest, ein Video
+        anschaust oder ein Bild bearbeitest, arbeitet die Grafikkarte im Hintergrund.
+      </p>
+      <p>
+        Dazu führt sie sehr viele <b>mathematische Berechnungen</b> aus: Farben, Schatten,
+        Spiegelungen, Bewegungen, Auflösung und vieles mehr. Am Ende entsteht ein fertiges
+        Bild, das mehrmals pro Sekunde an den Bildschirm gesendet wird.
+      </p>
+
+      <h2>2. Unterschied zwischen CPU und GPU</h2>
+      <p>
+        Im PC arbeiten <b>CPU</b> (Prozessor) und <b>GPU</b> (Grafikprozessor) zusammen,
+        haben aber unterschiedliche Aufgaben.
+      </p>
+
+      <div class="grid grid-2">
+        <div>
+          <h3>CPU – der Allround-Prozessor</h3>
+          <ul>
+            <li>Hat wenige, dafür sehr leistungsstarke Rechenkerne (z.&nbsp;B. 6–16 Kerne).</li>
+            <li>Bearbeitet Aufgaben meist <b>nacheinander</b> (seriell).</li>
+            <li>Steuert Programme, Betriebssystem und allgemeine Logik.</li>
+            <li>Eignet sich für alles, was viele Entscheidungen und Verzweigungen hat.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>GPU – der Grafik-Spezialist</h3>
+          <ul>
+            <li>Besitzt <b>tausende kleinere Rechenkerne</b> (Shader / Stream-Prozessoren).</li>
+            <li>Ist für Aufgaben gedacht, die <b>parallel</b> berechnet werden können.</li>
+            <li>
+              Berechnet vor allem Bildinformationen: Pixel, Farben, Licht, Schatten,
+              3D-Objekte.
+            </li>
+            <li>
+              Ideal für Spiele, Video-Rendering, Bildbearbeitung und KI-Berechnungen.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <b>Merksatz:</b> Die <b>CPU</b> ist der Allrounder für Logik und Programme –
+        die <b>GPU</b> ist der Spezialist für alles, was auf dem Bildschirm zu sehen ist.
+      </div>
+
+      <h2>3. Arten von Grafikkarten und Einsatzzwecke</h2>
+
+      <h3>3.1 Integrierte Grafik</h3>
+      <p>
+        Bei vielen Prozessoren ist schon eine einfache Grafikeinheit eingebaut.
+        Diese nutzt den normalen Arbeitsspeicher mit und reicht für:
+      </p>
+      <ul>
+        <li>Office und Internet</li>
+        <li>Videos und Streams</li>
+        <li>einfache oder ältere Spiele</li>
+      </ul>
+
+      <h3>3.2 Dedizierte Consumer-/Gaming-Grafikkarten</h3>
+      <p>
+        Dedizierte Grafikkarten sind eigene Steckkarten mit <b>eigener GPU und eigenem
+        Grafikspeicher (VRAM)</b>. Sie werden im PCIe-Steckplatz des Mainboards betrieben
+        und sind deutlich leistungsstärker als integrierte Lösungen.
+      </p>
+      <p>Typische Einsatzzwecke:</p>
+      <ul>
+        <li>Gaming und E-Sport</li>
+        <li>Bild- und Videobearbeitung</li>
+        <li>Streaming, mehrere Monitore, hohe Auflösungen</li>
+      </ul>
+
+      <h3>3.3 Workstation- / CAD-Grafikkarten</h3>
+      <p>
+        Diese Karten sind speziell für professionelle Anwendungen entwickelt, z.&nbsp;B.
+        für Ingenieure, Architektur oder medizinische Bildgebung.
+      </p>
+      <ul>
+        <li>
+          Besitzen <b>zertifizierte Treiber</b> für Programme wie AutoCAD, SolidWorks oder
+          CATIA.
+        </li>
+        <li>Sehr hohe <b>Stabilität und Genauigkeit</b> bei Berechnungen.</li>
+        <li>
+          Häufig mehr Grafikspeicher als Gaming-Karten, aber weniger auf hohe FPS
+          optimiert.
+        </li>
+        <li>Deutlich teurer, da sie für den professionellen Dauereinsatz gedacht sind.</li>
+      </ul>
+
+      <h3>3.4 GPU im Rechenzentrum (KI- und Compute-GPUs)</h3>
+      <p>
+        In Servern und Rechenzentren werden spezielle GPUs verwendet, die für
+        <b>künstliche Intelligenz, Simulationen und wissenschaftliche Berechnungen</b>
+        optimiert sind. Sie werden oft in Racks verbaut und haben keinen direkten
+        Monitorausgang.
+      </p>
+    </section>
   </main>
+
   <footer>
-    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte
+    Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte von Gérôme Fehr & Hüseyin Özdemir
   </footer>
 </body>
 </html>
