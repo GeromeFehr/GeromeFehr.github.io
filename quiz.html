@@ -8,7 +8,6 @@
 <body>
   <header>
     <h1>Grafikkarte – Lernzirkelstation</h1>
-    
     <nav>
       <a href="index.html">Startseite</a>
       <a href="grundlagen.html">Grundlagen</a>
@@ -16,20 +15,31 @@
       <a href="aufbau.html">Aufbau</a>
       <a href="quiz.html">Quiz</a>
     </nav>
-    
   </header>
-  <main>
-    
-<section class="card">
-  <span class="badge">Quiz</span>
-  <h2>4. Lernzirkel-Quiz</h2>
-  <p>Diese Seite kann später ein kleines Quiz enthalten. Für den Anfang reicht es,
-     hier Fragen für Mitschülerinnen und Mitschüler zu notieren.</p>
-</section>
 
+  <main>
+    <section class="card">
+      <span class="badge">Quiz</span>
+      <h2>4. Lernzirkel-Quiz: Prüfe dein Wissen</h2>
+      <p>Beantworte die folgenden Fragen. Wähle jeweils eine Antwort aus und klicke
+         anschließend auf <b>Auswerten</b>, um dein Ergebnis zu sehen.</p>
+
+      <div id="quiz-root"></div>
+
+      <button id="check-btn">Auswerten</button>
+      <div id="quiz-result" class="result"></div>
+
+      <div class="highlight" style="margin-top: 1.25rem;">
+        <b>Tipp:</b> Wenn du dir bei einer Frage unsicher bist, schau noch einmal auf die
+        Seiten <i>Grundlagen</i>, <i>Kennzahlen</i> oder <i>Aufbau</i> nach.
+      </div>
+    </section>
   </main>
+
   <footer>
     Lernzirkel LF02 – Hardwarekomponenten · Komponente: Grafikkarte
   </footer>
+
+  <script src="quiz.js"></script>
 </body>
 </html>
