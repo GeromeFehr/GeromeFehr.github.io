@@ -1,4 +1,5 @@
-// Fragenkatalog für das Grafikkarten-Quiz
+// Einfaches Grafikkarten-Quiz für die Lernstation
+
 const questions = [
   {
     text: "Welche Hauptaufgabe hat die Grafikkarte im Computer?",
@@ -13,7 +14,7 @@ const questions = [
     text: "Worin unterscheidet sich eine GPU grundsätzlich von einer CPU?",
     options: [
       "Die GPU hat sehr viele einfache Rechenkerne und ist auf parallele Berechnungen spezialisiert.",
-      "Die GPU ist langsamer, aber speichert mehr Daten dauerhaft.",
+      "Die GPU ist langsamer, speichert aber mehr Daten dauerhaft.",
       "Es gibt keinen Unterschied, beide machen exakt das Gleiche."
     ],
     correct: 0
@@ -74,9 +75,11 @@ const questions = [
   }
 ];
 
-// Quiz dynamisch in die Seite einbauen
+// baut das Quiz in den div#quiz-root ein
 function renderQuiz() {
   const root = document.getElementById("quiz-root");
+  if (!root) return;
+
   root.innerHTML = "";
 
   questions.forEach((q, idx) => {
@@ -84,7 +87,7 @@ function renderQuiz() {
     container.className = "quiz-question";
 
     const p = document.createElement("p");
-    p.innerHTML = (idx + 1) + ". " + q.text;
+    p.textContent = (idx + 1) + ". " + q.text;
     container.appendChild(p);
 
     const optionsDiv = document.createElement("div");
@@ -108,7 +111,7 @@ function renderQuiz() {
   });
 }
 
-// Auswertung der Antworten
+// wertet das Quiz aus
 function checkQuiz() {
   let correctCount = 0;
   let unanswered = 0;
@@ -122,3 +125,41 @@ function checkQuiz() {
     if (Number(selected.value) === q.correct) {
       correctCount++;
     }
+  });
+
+  const result = document.getElementById("quiz-result");
+  if (!result) return;
+
+  if (unanswered > 0) {
+    result.textContent =
+      `Du hast ${correctCount} von ${questions.length} Fragen richtig beantwortet. ` +
+      `(${unanswered} Frage(n) noch unbeantwortet.)`;
+    return;
+  }
+
+  const ratio = correctCount / questions.length;
+  let feedback = "";
+
+  if (ratio === 1) {
+    feedback = "Perfekt! Du hast alle Fragen richtig beantwortet – Grafik-Gott! 🔥";
+  } else if (ratio >= 0.75) {
+    feedback = "Sehr gut! Du kennst dich mit Grafikkarten schon richtig gut aus. 💪";
+  } else if (ratio >= 0.5) {
+    feedback = "Solide Basis, aber du kannst dir die Inhalte noch einmal ansehen. 🙂";
+  } else {
+    feedback = "Kein Stress – schau dir die Grundlagen nochmal an und versuch es erneut. 🙂";
+  }
+
+  result.textContent =
+    `Du hast ${correctCount} von ${questions.length} Fragen richtig beantwortet. ` +
+    feedback;
+}
+
+// Initialisierung nach Laden der Seite
+document.addEventListener("DOMContentLoaded", () => {
+  renderQuiz();
+  const btn = document.getElementById("check-btn");
+  if (btn) {
+    btn.addEventListener("click", checkQuiz);
+  }
+});
