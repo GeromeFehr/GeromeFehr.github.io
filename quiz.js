@@ -75,7 +75,7 @@ const questions = [
   }
 ];
 
-// baut das Quiz in den div#quiz-root ein
+// Quiz in die Seite rendern
 function renderQuiz() {
   const root = document.getElementById("quiz-root");
   if (!root) return;
@@ -111,7 +111,7 @@ function renderQuiz() {
   });
 }
 
-// wertet das Quiz aus
+// Quiz auswerten
 function checkQuiz() {
   let correctCount = 0;
   let unanswered = 0;
@@ -155,11 +155,9 @@ function checkQuiz() {
     feedback;
 }
 
-// Initialisierung nach Laden der Seite
+// Init
 document.addEventListener("DOMContentLoaded", () => {
   renderQuiz();
   const btn = document.getElementById("check-btn");
-  if (btn) {
-    btn.addEventListener("click", checkQuiz);
-  }
+  if (btn) btn.addEventListener("click", checkQuiz);
 });
