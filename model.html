@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-Modell – Grafikkarte</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 3D Viewer (Google Model Viewer) -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Grafikkarte – 3D Modell</h1>
+        <nav>
+            <a href="index.html">Startseite</a>
+            <a href="grundlagen.html">Grundlagen</a>
+            <a href="kennzahlen.html">Kennzahlen</a>
+            <a href="aufbau.html">Aufbau</a>
+            <a href="modell.html" class="active">3D-Modell</a>    
+            <a href="benchmark.html">Benchmark</a>
+            <a href="quiz.html">Quiz</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="card">
+            <span class="badge">3D-Modell</span>
+            <h2>Interaktive 3D-Grafikkarte</h2>
+            <p>
+                Hier kannst du eine Grafikkarte in 3D betrachten.  
+                Drehe sie mit der Maus oder dem Finger und zoome heran, um Details besser zu erkennen.
+            </p>
+
+            <model-viewer src="models/grafikkarte.glb"
+                          alt="3D-Modell einer Grafikkarte"
+                          camera-controls
+                          auto-rotate
+                          auto-rotate-delay="3000"
+                          interaction-prompt="auto"
+                          exposure="1.0"
+                          style="
+                            width: 100%;
+                            max-width: 650px;
+                            height: 420px;
+                            margin: 2rem auto;
+                            border-radius: 12px;
+                            background: #0f172a;">
+            </model-viewer>
+
+            <p style="text-align:center; opacity:0.8;">
+                Tipp: Zum Zoomen einfach scrollen – oder auf dem Handy zwei Finger benutzen.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Grafikkarten-Lernstation · 3D-Modell</p>
+    </footer>
+</body>
+</html>
