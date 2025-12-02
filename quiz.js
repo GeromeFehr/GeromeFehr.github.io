@@ -97,7 +97,7 @@ const questions = [
     correct: 1
   },
   {
-    text: "Welche Aussage zu Raytracing trifft am ehesten zu?",
+    text: "(Expertenfrage) Welche Aussage zu Raytracing trifft am ehesten zu?",
     options: [
       "Raytracing ist ein Verfahren zur realistischen Berechnung von Licht und Schatten anhand von Lichtstrahlen.",
       "Raytracing beschreibt die Geschwindigkeit des Grafikkartenlüfters.",
